@@ -1,15 +1,15 @@
-CREATE DATABASE `student-management`;
+CREATE DATABASE `student_management`;
 
-USE `student-management`;
+USE `student_management`;
 
-CREATE TABLE Class (
+CREATE TABLE class (
     id INT,
-    name VARCHAR(100)
+    name VARCHAR(50)
 );
 
-CREATE TABLE Teacher (
+CREATE TABLE teacher (
     id INT,
-    name VARCHAR(100),
+    name VARCHAR(50),
     age INT,
-    country VARCHAR(100)
+    country VARCHAR(20)
 );
