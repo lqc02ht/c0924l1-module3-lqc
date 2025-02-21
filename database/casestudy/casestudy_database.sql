@@ -203,7 +203,7 @@ INSERT INTO hop_dong_chi_tiet (ma_hop_dong_chi_tiet, so_luong, ma_hop_dong, ma_d
 SELECT * 
 FROM nhan_vien 
 WHERE (ho_ten LIKE 'H%' OR ho_ten LIKE 'T%' OR ho_ten LIKE 'K%') 
-AND LENGTH(ho_ten) <= 18;
+AND CHAR_LENGTH(ho_ten) <= 18;
 
 -- câu 3
 SELECT *, YEAR(CURDATE()) - YEAR(ngay_sinh) AS tuoi
@@ -211,12 +211,6 @@ FROM khach_hang
 WHERE YEAR(CURDATE()) - YEAR(ngay_sinh) BETWEEN 18 AND 50
 AND dia_chi IN ('Đà Nẵng', 'Quảng Trị');
 
--- kh
-SELECT * FROM khach_hang;
--- lk
-SELECT * FROM loai_khach;
--- hd
-SELECT * FROM  hop_dong;
 -- câu 4
 SELECT kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, COUNT(hd.ma_hop_dong) AS so_lan_dat_phong
 FROM khach_hang kh
@@ -227,5 +221,45 @@ GROUP BY kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach
 ORDER BY so_lan_dat_phong ASC;
 
 -- câu 5
+SELECT kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, 
+       dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, 
+       (dv.chi_phi_thue + SUM(hdct.so_luong * dvdk.gia)) AS tong_tien
+FROM khach_hang kh
+JOIN loai_khach lk ON kh.ma_loai_khach = lk.ma_loai_khach
+LEFT JOIN hop_dong hd ON kh.ma_khach_hang = hd.ma_khach_hang
+LEFT JOIN dich_vu dv ON hd.ma_dich_vu = dv.ma_dich_vu
+LEFT JOIN hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
+LEFT JOIN dich_vu_di_kem dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+GROUP BY kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, 
+         dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, dv.chi_phi_thue;
 
+-- câu 6
+SELECT dv.ma_dich_vu, dv.ten_dich_vu, dv.dien_tich, dv.chi_phi_thue, ldv.ten_loai_dich_vu
+FROM dich_vu dv
+JOIN loai_dich_vu ldv ON dv.ma_loai_dich_vu = ldv.ma_loai_dich_vu
+LEFT JOIN hop_dong hd ON dv.ma_dich_vu = hd.ma_dich_vu 
+      AND YEAR(hd.ngay_lam_hop_dong) = 2021 AND MONTH(hd.ngay_lam_hop_dong) BETWEEN 1 AND 3
+WHERE hd.ma_hop_dong IS NULL;
 
+-- câu 7
+-- câu 8
+-- câu 9
+-- câu 10
+-- câu 11
+-- câu 12
+-- câu 13
+-- câu 14
+-- câu 15
+-- câu 16
+-- câu 17
+-- câu 18
+-- câu 19
+-- câu 20
+-- câu 21
+-- câu 22
+-- câu 23
+-- câu 24
+-- câu 25
+-- câu 26
+-- câu 27
+-- câu 28
