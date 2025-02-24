@@ -212,6 +212,7 @@ WHERE YEAR(CURDATE()) - YEAR(ngay_sinh) BETWEEN 18 AND 50
 AND dia_chi IN ('Đà Nẵng', 'Quảng Trị');
 
 -- câu 4
+USE FuramaResort;
 SELECT kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, COUNT(hd.ma_hop_dong) AS so_lan_dat_phong
 FROM khach_hang kh
 JOIN loai_khach lk ON kh.ma_loai_khach = lk.ma_loai_khach
@@ -230,8 +231,7 @@ LEFT JOIN hop_dong hd ON kh.ma_khach_hang = hd.ma_khach_hang
 LEFT JOIN dich_vu dv ON hd.ma_dich_vu = dv.ma_dich_vu
 LEFT JOIN hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
 LEFT JOIN dich_vu_di_kem dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
-GROUP BY kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, 
-         dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, dv.chi_phi_thue;
+GROUP BY kh.ma_khach_hang, hd.ma_hop_dong;
 
 -- câu 6
 SELECT dv.ma_dich_vu, dv.ten_dich_vu, dv.dien_tich, dv.chi_phi_thue, ldv.ten_loai_dich_vu
@@ -242,9 +242,30 @@ LEFT JOIN hop_dong hd ON dv.ma_dich_vu = hd.ma_dich_vu
 WHERE hd.ma_hop_dong IS NULL;
 
 -- câu 7
+SELECT DISTINCT dv.ma_dich_vu, dv.ten_dich_vu, dv.dien_tich, dv.so_nguoi_toi_da, dv.chi_phi_thue, ldv.ten_loai_dich_vu
+FROM dich_vu dv
+JOIN loai_dich_vu ldv ON dv.ma_loai_dich_vu = ldv.ma_loai_dich_vu
+JOIN hop_dong hd2020 ON dv.ma_dich_vu = hd2020.ma_dich_vu AND YEAR(hd2020.ngay_lam_hop_dong) = 2020
+LEFT JOIN hop_dong hd2021 ON dv.ma_dich_vu = hd2021.ma_dich_vu AND YEAR(hd2021.ngay_lam_hop_dong) = 2021
+WHERE hd2021.ma_hop_dong IS NULL;
+
 -- câu 8
+SELECT DISTINCT ho_ten FROM khach_hang;
+
 -- câu 9
+SELECT MONTH(ngay_lam_hop_dong) AS thang, COUNT(DISTINCT ma_khach_hang) AS so_luong_khach_hang
+FROM hop_dong
+WHERE YEAR(ngay_lam_hop_dong) = 2021
+GROUP BY thang
+ORDER BY thang;
+
 -- câu 10
+SELECT hd.ma_hop_dong, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, hd.tien_dat_coc,
+       COALESCE(SUM(hdct.so_luong), 0) AS so_luong_dich_vu_di_kem
+FROM hop_dong hd
+LEFT JOIN hop_dong_chi_tiet hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
+GROUP BY hd.ma_hop_dong, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, hd.tien_dat_coc;
+
 -- câu 11
 -- câu 12
 -- câu 13
