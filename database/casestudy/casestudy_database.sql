@@ -250,8 +250,17 @@ LEFT JOIN hop_dong hd2021 ON dv.ma_dich_vu = hd2021.ma_dich_vu AND YEAR(hd2021.n
 WHERE hd2021.ma_hop_dong IS NULL;
 
 -- câu 8
+-- Cách 1
 SELECT DISTINCT ho_ten FROM khach_hang;
-
+-- Cách 2
+SELECT ho_ten FROM khach_hang GROUP BY ho_ten;
+-- Cách 3
+SELECT ho_ten 
+FROM khach_hang kh1
+WHERE NOT EXISTS (
+    SELECT 1 FROM khach_hang kh2 
+    WHERE kh1.ho_ten = kh2.ho_ten AND kh1.ma_khach_hang > kh2.ma_khach_hang
+);
 -- câu 9
 SELECT MONTH(ngay_lam_hop_dong) AS thang, COUNT(DISTINCT ma_khach_hang) AS so_luong_khach_hang
 FROM hop_dong
