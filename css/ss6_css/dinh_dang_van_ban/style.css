@@ -1,0 +1,28 @@
+* {
+    font-family: sans-serif;
+}
+
+h1 {
+    margin-bottom: 5px;
+    font-size: 25px;
+}
+
+hr {
+    margin: 0px;
+}
+
+p {
+    text-align: justify;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#normal-blue {
+    color: #1E90FF;
+}
+
+.bold-blue {
+    color: blue;
+}
