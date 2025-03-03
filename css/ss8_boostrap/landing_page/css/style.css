@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.navbar {
+    background: white;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+.navbar-brand span {
+    font-size: 1.2rem;
+    color: #000;
+}
+.navbar-brand img {
+    height: 30px;
+}
+.copilot {
+    background: #f2f2f2;
+    text-align: center;
+    padding: 80px 20px;
+}
+.copilot h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+.copilot p {
+    font-size: 1.2rem;
+}
+.btn-primary {
+    background: #0067b8;
+    border: none;
+    padding: 10px 20px;
+}
+.btn-primary:hover {
+    background: #004a8f;
+}
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.gallery img {
+    width: 100%;
+    height: auto;
+}
+.features h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.feature-item img {
+    display: block;
+    margin: 0 auto 10px;
+}
+.feature-item p {
+    font-size: 1rem;
+    font-weight: bold;
+}
+.feature-item a {
+    text-decoration: none;
+    color: #0067b8;
+}
+.feature-item a:hover {
+    text-decoration: underline;
+}
+.info-section {
+    border-top: 1px solid #ddd;
+}
+.social-links img {
+    margin: 0 5px;
+}
+.social-links strong {
+    margin-right: 10px;
+}
+.footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+}
