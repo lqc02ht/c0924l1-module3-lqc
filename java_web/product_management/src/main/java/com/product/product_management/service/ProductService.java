@@ -9,8 +9,20 @@ public class ProductService implements IProductService {
     private static List<Product> products = new ArrayList<>();
 
     static {
-        products.add(new Product(1, "Laptop", 1000, "Laptop Gaming", "Dell"));
-        products.add(new Product(2, "Smartphone", 800, "Điện thoại cao cấp", "Samsung"));
+        products.add(new Product(1, "Laptop", 1500, "CellphoneS", "Dell"));
+        products.add(new Product(1, "Laptop", 1500, "CellphoneS", "Dell"));
+        products.add(new Product(1, "Laptop", 1500, "CellphoneS", "Dell"));
+        products.add(new Product(1, "Laptop", 1500, "CellphoneS", "Dell"));
+        products.add(new Product(1, "Laptop", 1500, "CellphoneS", "Dell"));
+        products.add(new Product(1, "Laptop", 1500, "CellphoneS", "Dell"));
+        products.add(new Product(1, "Laptop", 1500, "CellphoneS", "Dell"));
+        products.add(new Product(1, "Laptop", 1500, "CellphoneS", "Dell"));
+        products.add(new Product(1, "Laptop", 1500, "CellphoneS", "Dell"));
+        products.add(new Product(1, "Laptop", 1500, "CellphoneS", "Dell"));
+        products.add(new Product(1, "Laptop", 1500, "CellphoneS", "Dell"));
+        products.add(new Product(1, "Laptop", 1500, "CellphoneS", "Dell"));
+        products.add(new Product(1, "Laptop", 1500, "CellphoneS", "Dell"));
+        products.add(new Product(1, "Laptop", 1500, "CellphoneS", "Dell"));
     }
 
     @Override
