@@ -1,6 +1,6 @@
 package com.product.product_management.controller;
 
-import com.product.product_management.Service.ProductService;
+import com.product.product_management.service.ProductService;
 import com.product.product_management.model.Product;
 
 import javax.servlet.ServletException;
